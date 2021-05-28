@@ -112,7 +112,7 @@
                      type="danger" slot="reference">删除</el-button>
         </el-popconfirm>
         <el-dialog title="用户信息" :visible.sync="dialogFormVisible">
-          <el-form :model="form" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+          <el-form :model="form" :rules="rules" ref="form" label-width="100px" class="demo-ruleForm">
             <el-form-item label="用户名" prop="username">
               <el-input style="width: 400px" v-model="form.username"></el-input>
             </el-form-item>
@@ -194,7 +194,6 @@ export default {
         ],
         age: [
           { required: true, message: '请输入年龄', trigger: 'blur' },
-          { min: 3, max: 8, message: '长度在 3 到 8 个字符', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入地址', trigger: 'blur' },
@@ -225,19 +224,30 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
+          if (this.form.roleCode === '管理员') {
+            this.form.roleCode = 1;
+          }
+          if (this.form.roleCode === '普通用户') {
+            this.form.roleCode = 2;
+          }
           updateUser(this.form).then(response => {
-            this.list = response.data.list
-            this.total = response.data.total
-            this.listLoading = false
+            this.$message({
+              message: '修改成功',
+              type: 'success'
+            });
+            this.resetForm('form');
+            this.dialogFormVisible = false;
+            this.fetchData(1);
+          }).catch(reason => {
+            this.$message.error("修改失败!");
           })
         } else {
-          console.log('error submit!!');
           return false;
         }
       });
     },
     cancel() {
-      this.form = {};
+      this.resetForm('form');
       this.dialogFormVisible = false;
     },
     fetchData(page,clear) {
@@ -281,7 +291,12 @@ export default {
       this.form.address = row.address;
       this.form.age = row.age;
       this.form.nickName = row.nickName;
-      this.form.roleCode = row.roleCode;
+      if (row.roleCode === 1) {
+        this.form.roleCode = '管理员';
+      } else {
+        this.form.roleCode = '普通用户';
+      }
+
       this.dialogFormVisible = true;
     },
     handleDelete(id) {
@@ -308,6 +323,9 @@ export default {
         return 'success-row';
       }
       return '';
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
     }
   }
 }

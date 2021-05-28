@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { addUser, getAccountList } from '@/api/table'
+import { addUser } from '@/api/table'
 
 export default {
   data() {
@@ -59,7 +59,7 @@ export default {
         ],
         age: [
           { required: true, message: '请输入年龄', trigger: 'blur' },
-          { min: 3, max: 8, message: '长度在 3 到 8 个字符', trigger: 'blur' }
+          { min: 1, max: 2, message: '长度在 1 到 2 个数字', trigger: 'blur' }
         ],
         address: [
           { required: true, message: '请输入地址', trigger: 'blur' },
@@ -76,9 +76,13 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           addUser(this.ruleForm).then(response => {
-            this.list = response.data.list
-            this.total = response.data.total
-            this.listLoading = false
+            this.$message({
+              message: '添加成功',
+              type: 'success'
+            });
+            this.resetForm('ruleForm');
+          }).catch(reason => {
+            this.$message.error("添加失败!");
           })
         } else {
           console.log('error submit!!');
