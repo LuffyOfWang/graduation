@@ -76,7 +76,7 @@ import { scheduleGetScmList } from '@/api/table'
 export default {
   data() {
     return {
-      path:"ws://192.168.0.200:8005/qrCodePage/ID=1/refreshTime=5",
+      path:"ws://localhost:8888/",
       socket:"",
       list: null,
       scmDataDTO: {},
