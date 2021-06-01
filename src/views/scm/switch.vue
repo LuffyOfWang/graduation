@@ -85,67 +85,6 @@ export default {
       value1: true,
       value2: true,
       value3: true,
-      tableData: [{
-        updateTime: '2016-05-02',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        updateTime: '2016-05-04',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        updateTime: '2016-05-01',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        updateTime: '2016-05-03',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        updateTime: '2016-05-03',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        updateTime: '2016-05-03',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        updateTime: '2016-05-03',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        updateTime: '2016-05-03',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        updateTime: '2016-05-03',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }, {
-        updateTime: '2016-05-03',
-        temperature: '39.75',
-        concentration: '39.75',
-        intensity: '39.75',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }],
       timeout: 0
     }
   },
