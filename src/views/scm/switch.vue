@@ -39,32 +39,32 @@
     </el-table>
     <el-switch
       v-model="value"
-      width="60"
+
       @change="change"
       style="height: 100px;"
       active-text="总开关">
     </el-switch>
     <el-switch
       v-model="value1"
-      width="60"
+
       @change="change1"
-      style="height: 100px;padding-left: 280px"
+      style="height: 100px;padding-left: 290px"
       active-text="温度开关">
     </el-switch>
 
     <el-switch
       v-model="value2"
-      width="60"
+
       @change="change2"
-      style="height: 100px;padding-left: 250px"
+      style="height: 100px;padding-left: 280px"
       active-text="烟雾开关" >
     </el-switch>
 
     <el-switch
       v-model="value3"
-      width="60"
+
       @change="change3"
-      style="height: 100px;padding-left: 270px"
+      style="height: 100px;padding-left: 280px"
       active-text="光敏开关">
     </el-switch>
   </div>
@@ -89,7 +89,8 @@ export default {
     }
   },
   created() {
-    this.fetchData()
+    this.fetchData();
+    this.init();
   },
   mounted() {
     this.timeout= setInterval(() => {
@@ -137,7 +138,7 @@ export default {
         this.send("6")
       }
     },
-    init: function () {
+    init() {
       if(typeof(WebSocket) === "undefined"){
         alert("您的浏览器不支持socket")
       }else{
@@ -151,19 +152,19 @@ export default {
         this.socket.onmessage = this.getMessage
       }
     },
-    open: function () {
+    open() {
       console.log("socket连接成功")
     },
-    error: function () {
+    error() {
       console.log("连接错误")
     },
-    getMessage: function (msg) {
+    getMessage(msg) {
       console.log(msg.data)
     },
-    send: function (params) {
+    send(params) {
       this.socket.send(params)
     },
-    close: function () {
+    close() {
       console.log("socket已经关闭")
     }
   },
