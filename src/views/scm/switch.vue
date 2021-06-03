@@ -113,16 +113,29 @@ export default {
       this.value3 = this.value;
     },
     change1() {
-      //todo 温度开关
-      this.send("Temperature")
+      //温度开关
+      if (this.value1 === true) {
+        this.send("1")
+      } else {
+        this.send("2")
+      }
+
     },
     change2() {
-      //todo 烟雾开关
-      this.send("Smog")
+      //烟雾开关
+      if (this.value2 === true) {
+        this.send("3")
+      } else {
+        this.send("4")
+      }
     },
     change3() {
-      //todo 光敏开关
-      this.send("illumination")
+      //光敏开关
+      if (this.value3 === true) {
+        this.send("5")
+      } else {
+        this.send("6")
+      }
     },
     init: function () {
       if(typeof(WebSocket) === "undefined"){
