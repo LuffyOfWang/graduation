@@ -109,9 +109,20 @@ export default {
       })
     },
     change() {
-      this.value1 = this.value;
-      this.value2 = this.value;
-      this.value3 = this.value;
+
+      if (this.value !== this.value1) {
+        this.value1 = this.value;
+        this.change1();
+      }
+      if (this.value !== this.value2) {
+        this.value2 = this.value;
+        this.change2();
+      }
+      if (this.value !== this.value3) {
+        this.value3 = this.value;
+        this.change3();
+      }
+
     },
     change1() {
       //温度开关
