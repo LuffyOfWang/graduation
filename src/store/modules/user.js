@@ -1,6 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import da from 'element-ui/src/locale/lang/da'
 
 const getDefaultState = () => {
   return {
@@ -38,7 +39,7 @@ const actions = {
         setToken(data.token)
         resolve()
       }).catch(error => {
-        reject(error)
+        reject(error.message)
       })
     })
   },
