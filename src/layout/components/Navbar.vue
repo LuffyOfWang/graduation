@@ -19,11 +19,8 @@
               Home
             </el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
+          <a target="_blank" href="https://github.com/">
             <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
           </a>
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">Log Out</span>
@@ -38,6 +35,8 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import { removeToken } from '@/utils/auth'
+import { resetRouter } from '@/router'
 
 export default {
   components: {
@@ -56,7 +55,8 @@ export default {
       this.$store.dispatch('app/toggleSideBar')
     },
     async logout() {
-      await this.$store.dispatch('user/logout')
+      removeToken() // must remove  token  first
+      resetRouter()
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
     }
   }
